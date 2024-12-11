@@ -27,7 +27,7 @@ fun main() {
     check(part1(listOf("test_input")) == 1)
 
     // Read the input from the `src/Day01.txt` file.
-    val input = readInput("Day01")
+    val input = readInput("day01", "Day01")
     input.println()
 
     val firstList = mutableListOf<Int>()
@@ -78,3 +78,50 @@ fun main() {
     //part1(input).println()
     //part2(input).println()
 }
+
+
+/*
+fun main() {
+
+    fun String.splitLeftRight() = split(" ").let { (left, right) ->
+        left.trim().toInt() to right.trim().toInt()
+    }
+
+    fun part1(input: List<String>): Int = input
+        .filter(String::isNotBlank)
+        .map(String::splitLeftRight)
+        .unzip()
+        .let { (left, right) ->
+            val sortedRight = right.sorted()
+
+            left.sorted().foldIndexed(0) { leftIndex: Int, acc: Int, leftValue: Int ->
+                acc + (leftValue - sortedRight[leftIndex]).absoluteValue
+            }
+        }
+
+    fun part2(input: List<String>): Int =
+        input
+            .filter(String::isNotBlank)
+            .map(String::splitLeftRight)
+            .unzip()
+            .let { (left, right) ->
+                left.fold(0) { acc: Int, leftValue: Int ->
+                    acc + (leftValue * right.count(leftValue::equals))
+                }
+            }
+
+    // Test if implementation meets criteria from the description, like:
+    //check(part1(listOf("test_input")) == 1)
+
+    // Or read a large test input from the `src/Day01_test.txt` file:
+    //val testInput = readInput("Day01_test")
+    //check(part1(testInput) == 1)
+
+    // Read the input from the `src/Day01.txt` file.
+    val input = readInput("Day01")
+    part1(input).println()
+    part2(input).println()
+
+}
+
+ */
